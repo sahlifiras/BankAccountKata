@@ -26,13 +26,13 @@ public class AccountController {
     }
 
     @GetMapping("/{accountNumber}")
-    public ResponseEntity<AccountView> getAccount(@PathVariable String accountNumber) {
+    public ResponseEntity<AccountView> getAccountOperations(@PathVariable String accountNumber) {
         Account account = accountService.getAccount(accountNumber);
         return ResponseEntity.ok(accountMapper.convert(account));
     }
 
     @GetMapping("/{accountNumber}/{monthNumber}")
-    public ResponseEntity<AccountView> getAccount(@PathVariable String accountNumber, @PathVariable int monthNumber) {
+    public ResponseEntity<AccountView> getStatementPrinting(@PathVariable String accountNumber, @PathVariable int monthNumber) {
         Account account = accountService.getStatementPrinting(accountNumber, monthNumber);
         return ResponseEntity.ok(accountMapper.convert(account));
     }

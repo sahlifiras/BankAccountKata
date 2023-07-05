@@ -18,3 +18,14 @@ The implementation of a simplified bank account management, the Account class is
 
 ## Usage
 mvn test
+
+## Solution
+
+Exposed REST API with the following endpoints
+
+| feature            | Description                                             | verb | url                                 | request body                                             |
+|--------------------|---------------------------------------------------------|------|-------------------------------------|----------------------------------------------------------|
+| Deposit/Withdraw   | Do operations of Deposit and withdraw                   | POST | /accounts                           | { "accountNumber": 123, amount": 10, "type": "DEPOSIT" } |
+| Account Operations | Get the informations of the account and its operations  | GET  | /accounts/{accountId}               | NA                                                       |
+| Statement printing | Get Statement printing of the last {monthNumber} months | GET  | /accounts/{accountId}/{monthNumber} | NA                                                       |
+
