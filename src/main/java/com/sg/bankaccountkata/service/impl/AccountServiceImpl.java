@@ -7,6 +7,7 @@ import com.sg.bankaccountkata.model.OperationType;
 import com.sg.bankaccountkata.repository.AccountRepository;
 import com.sg.bankaccountkata.service.Interface.AccountService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
 
@@ -34,6 +36,9 @@ public class AccountServiceImpl implements AccountService {
             throw new IllegalArgumentException("Account not found");
         }
         account.setOperations(account.getOperations().stream().filter(elm -> elm.getDate().isAfter(LocalDateTime.now().minusMonths(monthNumbers))).collect(Collectors.toList()));
+
+        account.getOperations().forEach(operation -> printTransaction(operation));
+
         return account;
     }
 
@@ -78,5 +83,11 @@ public class AccountServiceImpl implements AccountService {
 
     private BigDecimal getAmount(OperationType type, BigDecimal amount) {
         return type.equals(OperationType.DEPOSIT) ? amount : amount.negate();
+    }
+
+    private void printTransaction(Operation operation) {
+        AccountServiceImpl.log.info(operation.getType().toString() + "\t" + operation.getDate() + "\t"
+                + operation.getAmount() + "\t" + operation.getBalance());
+
     }
 }

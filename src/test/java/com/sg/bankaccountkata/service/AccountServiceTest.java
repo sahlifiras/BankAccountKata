@@ -44,8 +44,8 @@ public class AccountServiceTest {
     @Test
     public void getAccountStatementPrinting() {
         Operation op1 = new Operation(OperationType.DEPOSIT, new BigDecimal("1000"), new BigDecimal("1000"), LocalDateTime.now().minusMonths(4));
-        Operation op2 = new Operation(OperationType.DEPOSIT, new BigDecimal("1000"), new BigDecimal("1000"), LocalDateTime.now().minusDays(70));
-        Operation op3 = new Operation(OperationType.DEPOSIT, new BigDecimal("1000"), new BigDecimal("1000"), LocalDateTime.now().minusMonths(1));
+        Operation op2 = new Operation(OperationType.DEPOSIT, new BigDecimal("1000"), new BigDecimal("2000"), LocalDateTime.now().minusDays(70));
+        Operation op3 = new Operation(OperationType.DEPOSIT, new BigDecimal("1000"), new BigDecimal("3000"), LocalDateTime.now().minusMonths(1));
         List<Operation> operatons = new ArrayList<>();
         operatons.add(op1);
         operatons.add(op2);
