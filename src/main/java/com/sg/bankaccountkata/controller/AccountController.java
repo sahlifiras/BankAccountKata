@@ -20,12 +20,8 @@ public class AccountController {
     private final AccountService accountService;
     private final AccountMapper accountMapper;
 
-
     @PostMapping("/doOperation")
-    public ResponseEntity<String> deposit(@Valid @RequestBody OperationRequest operation, Errors errors) {
-        if (errors.hasErrors()) {
-            return new ResponseEntity(errors.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<String> deposit(@Valid @RequestBody OperationRequest operation) {
         accountService.doOperation(operation);
         return new ResponseEntity(operation.getType() + " : Successful", HttpStatus.OK);
     }
