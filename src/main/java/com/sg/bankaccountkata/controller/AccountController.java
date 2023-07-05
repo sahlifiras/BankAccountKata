@@ -8,7 +8,6 @@ import com.sg.bankaccountkata.service.Interface.AccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,7 +20,7 @@ public class AccountController {
     private final AccountMapper accountMapper;
 
     @PostMapping("/doOperation")
-    public ResponseEntity<String> deposit(@Valid @RequestBody OperationRequest operation) {
+    public ResponseEntity<String> doOperation(@Valid @RequestBody OperationRequest operation) {
         accountService.doOperation(operation);
         return new ResponseEntity(operation.getType() + " : Successful", HttpStatus.OK);
     }

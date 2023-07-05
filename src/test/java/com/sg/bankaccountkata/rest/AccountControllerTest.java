@@ -35,7 +35,7 @@ public class AccountControllerTest {
 
     @Test
     public void testDepositWithNegativeAmount() throws Exception {
-        OperationRequest operationRequest = new OperationRequest("1234567890", OperationType.DEPOSIT, new BigDecimal("-500.00"));
+        OperationRequest operationRequest = new OperationRequest("1234567890", OperationType.DEPOSIT, new BigDecimal(-500.00));
         mockMvc.perform(MockMvcRequestBuilders.post("/accounts/doOperation")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(toJson(operationRequest)))
@@ -46,7 +46,7 @@ public class AccountControllerTest {
 
     @Test
     public void testDeposit() throws Exception {
-        OperationRequest operationRequest = new OperationRequest("1234567890", OperationType.DEPOSIT, new BigDecimal("500.00"));
+        OperationRequest operationRequest = new OperationRequest("1234567890", OperationType.DEPOSIT, new BigDecimal(500.00));
         mockMvc.perform(MockMvcRequestBuilders.post("/accounts/doOperation")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(toJson(operationRequest)))
@@ -57,7 +57,7 @@ public class AccountControllerTest {
 
     @Test
     public void testWithdraw() throws Exception {
-        OperationRequest operationRequest = new OperationRequest("1234567890", OperationType.WITHDRAW, new BigDecimal("500.00"));
+        OperationRequest operationRequest = new OperationRequest("1234567890", OperationType.WITHDRAW, new BigDecimal(500.00));
 
         mockMvc.perform(MockMvcRequestBuilders.post("/accounts/doOperation")
                         .contentType(MediaType.APPLICATION_JSON)
