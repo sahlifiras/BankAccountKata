@@ -29,4 +29,11 @@ public class Account {
         this.balance = BigDecimal.ZERO;
         this.operations = new ArrayList<>();
     }
+
+
+
+    public void addOperation(Operation operation) {
+        this.operations.add(operation);
+        operation.setAccount(this);
+    }
 }
